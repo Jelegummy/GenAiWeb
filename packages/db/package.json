@@ -1,0 +1,26 @@
+{
+  "name": "@app/db",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && pnpm generate && tsc --build",
+    "push": "prisma db push",
+    "seed": "tsx ./prisma/seeds/index.ts",
+    "studio": "prisma studio",
+    "generate": "prisma generate",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:reset": "prisma migrate reset"
+  },
+  "dependencies": {
+    "@nestjs/common": "11.0.12",
+    "@prisma/client": "7.0.1",
+    "@prisma/adapter-pg": "7.0.1",
+    "@prisma/client-runtime-utils": "7.0.1",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.6",
+    "prisma": "7.0.1"
+  }
+}

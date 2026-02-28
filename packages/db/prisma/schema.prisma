@@ -1,0 +1,35 @@
+datasource db {
+    provider = "postgresql"
+}
+
+generator client {
+    provider = "prisma-client"
+    output   = "../src/generated"
+}
+
+model User {
+    id       String @id @default(uuid())
+    email    String @unique
+    password String
+
+    role Role @default(USER)
+
+    firstName   String  @map("first_name")
+    lastName    String  @map("last_name")
+    phoneNumber String? @map("phone_number")
+    studentId   String? @map("student_id")
+    teacherId   String? @map("teacher_id")
+
+    points Int     @default(0)
+    major  String?
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("users")
+}
+
+enum Role {
+    USER
+    ADMIN
+}

@@ -1,0 +1,16 @@
+volumes:
+  travelling_data:
+
+services:
+  db:
+    container_name: travelling-database
+    image: postgres:17-alpine
+    restart: on-failure
+    ports:
+      - 5437:5432
+    environment:
+      - POSTGRES_DB=travelling
+      - POSTGRES_USER=local
+      - POSTGRES_PASSWORD=local
+    volumes:
+      - travelling_data:/var/lib/postgresql/data
