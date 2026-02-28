@@ -4,7 +4,7 @@ const Document = () => {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="/learnify-logo.png" />
+        <link rel="icon" href="/images/LOGO1.png" />
         <title>Travelling</title>
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://static.hotjar.com" />

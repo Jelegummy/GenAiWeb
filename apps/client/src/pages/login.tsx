@@ -65,10 +65,10 @@ const Login = () => {
         <div className="flex flex-col justify-center px-8 py-14 md:px-14">
           <div className="flex flex-col items-center gap-4">
             <Image
-              src="/images/temple.png"
+              src="/images/LOGO1.png"
               alt="Logo"
-              width={60}
-              height={60}
+              width={100}
+              height={100}
               className="drop-shadow-lg"
             />
             <h1 className="text-3xl font-bold tracking-tight text-gray-800">
