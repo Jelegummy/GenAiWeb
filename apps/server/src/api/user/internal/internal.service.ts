@@ -10,7 +10,7 @@ export class UserInternalService {
   constructor(
     private readonly db: PrismaService,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   async getMe(ctx: Context) {
     const user = getUserFromContext(ctx)
@@ -26,17 +26,7 @@ export class UserInternalService {
         firstName: true,
         lastName: true,
         phoneNumber: true,
-        studentId: true,
-        teacherId: true,
-        major: true,
         role: true,
-
-        school: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
       },
     })
     return users
@@ -91,18 +81,9 @@ export class UserInternalService {
         firstName: true,
         lastName: true,
         phoneNumber: true,
-        studentId: true,
-        teacherId: true,
-        major: true,
         role: true,
         createdAt: true,
         updatedAt: true,
-        school: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
       },
     })
 

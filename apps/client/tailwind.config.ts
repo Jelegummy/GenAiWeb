@@ -26,7 +26,7 @@ const config = {
       {
         classroom: {
           ...defaultTheme.light,
-          primary: '#2460E3',
+          primary: '#d01716',
           '.btn': {
             animation: 0,
           },

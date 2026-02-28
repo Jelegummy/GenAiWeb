@@ -4,7 +4,6 @@ export type RegisterArgs = {
   email: string
   password: string
   phoneNumber?: string
-  schoolName: string
 }
 
 export type LoginArgs = {

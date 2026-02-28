@@ -5,7 +5,7 @@ const Document = () => {
     <Html lang="en">
       <Head>
         <link rel="icon" href="/learnify-logo.png" />
-        <title>Learnify</title>
+        <title>Travelling</title>
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://static.hotjar.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
