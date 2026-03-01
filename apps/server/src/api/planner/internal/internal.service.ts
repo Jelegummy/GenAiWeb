@@ -41,4 +41,33 @@ export class InternalPlannerService {
 
         return planner
     }
+
+    async getHistory(ctx: Context) {
+        const user = getUserFromContext(ctx)
+
+        if (!user) {
+            throw new UnauthorizedException("Unauthorized")
+        }
+
+        const history = await this.db.tripHistory.findMany({
+            where: { userId: user.id },
+            orderBy: { createdAt: 'desc' }
+        })
+
+        return history
+    }
+
+    async getHistoryById(ctx: Context, id: string) {
+        const user = getUserFromContext(ctx)
+
+        if (!user) {
+            throw new UnauthorizedException("Unauthorized")
+        }
+
+        const history = await this.db.tripHistory.findFirst({
+            where: { id, userId: user.id }
+        })
+
+        return history
+    }
 }
