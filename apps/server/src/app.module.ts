@@ -10,12 +10,14 @@ import { MailerModule } from '@nestjs-modules/mailer'
 import { ZodValidationPipe } from 'nestjs-zod'
 
 import { UserModule } from './api/user/user.module'
+import { PlannerModule } from './api/planner/planner.module'
 
 @Module({
   imports: [
     UserModule,
     AuthModule,
     PrismaModule,
+    PlannerModule,
     MailerModule.forRoot(mailerConfig),
     // MinioModule.register({
     //   endPoint: env.MINIO_ENDPOINT,

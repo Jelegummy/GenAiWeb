@@ -10,3 +10,4 @@ deployment
 generated
 .venv
 /bin/**
+__pycache__

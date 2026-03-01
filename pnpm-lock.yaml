@@ -309,6 +309,8 @@ importers:
         specifier: 9.5.2
         version: 9.5.2(typescript@5.7.3)(webpack@5.98.0(@swc/core@1.15.3))
 
+  apps/travelling: {}
+
   packages/auth:
     dependencies:
       '@app/config':

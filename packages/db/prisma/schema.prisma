@@ -18,10 +18,30 @@ model User {
     lastName    String  @map("last_name")
     phoneNumber String? @map("phone_number")
 
-    createdAt DateTime @default(now()) @map("created_at")
-    updatedAt DateTime @updatedAt @map("updated_at")
+    createdAt     DateTime      @default(now()) @map("created_at")
+    updatedAt     DateTime      @updatedAt @map("updated_at")
+    tripHistories TripHistory[]
 
     @@map("users")
+}
+
+model TripHistory {
+    id          String  @id @default(uuid())
+    title       String? @map("title")
+    question    String  @map("question")
+    city        String  @map("city")
+    travelDates String  @map("travel_dates")
+    preferences String  @map("preferences")
+    budget      String? @map("budget")
+    planResult  String  @map("plan_result") @db.Text
+    coverImage  String? @map("cover_image")
+
+    userId    String   @map("user_id")
+    user      User     @relation(fields: [userId], references: [id])
+    createdAt DateTime @default(now()) @map("created_at")
+
+    @@index([userId])
+    @@map("trip_histories")
 }
 
 enum Role {

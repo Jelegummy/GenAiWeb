@@ -1,0 +1,12 @@
+{
+  "name": "@travelling/ai",
+  "scripts": {
+    "dev:api": "fastapi dev ./src/main.py --port 8000",
+    "dev": "python ./src/main.py",
+    "start": "concurrently 'python ./app.py' 'python ./src/main.py'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4"
+}
