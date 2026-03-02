@@ -1,11 +1,11 @@
 import { getSession } from "next-auth/react";
-import { CreatePlannerArgs, Planner } from "./types";
+import { CreatePlannerArgs, CreatePlannerResponse, Planner } from "./types";
 import { ENDPOINT, fetchers, HttpStatus } from "@/utils";
 
 export const createPlanner = async (args: CreatePlannerArgs) => {
     const session = await getSession()
 
-    const res = await fetchers.Post<{ accessToken: string }>(
+    const res = await fetchers.Post<CreatePlannerResponse>(
         `${ENDPOINT}/planner/internal/create`,
         {
             data: args,
@@ -15,7 +15,7 @@ export const createPlanner = async (args: CreatePlannerArgs) => {
         throw new Error(res.message)
     }
 
-    return res.data as { accessToken: string }
+    return res.data
 }
 
 export const getHistory = async () => {

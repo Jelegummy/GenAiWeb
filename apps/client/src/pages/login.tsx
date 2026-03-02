@@ -37,7 +37,7 @@ const Login = () => {
       const userRole = session?.user?.role
 
       if (userRole === 'USER') {
-        router.push('/dashboard/teacher/classroom')
+        router.push('/prompt')
       } else if (userRole === 'ADMIN') {
         router.push('/dashboard/admin')
       }

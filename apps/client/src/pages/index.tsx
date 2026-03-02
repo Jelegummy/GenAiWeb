@@ -14,7 +14,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 font-sans selection:bg-primary/20 selection:text-primary">
       <Navbar />
 
-      <div className="relative flex h-[90vh] min-h-[600px] w-full items-center justify-center">
+      <div className="relative flex h-[100vh] min-h-[600px] w-full items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -42,7 +42,7 @@ export default function Home() {
           <div className="mt-8 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
             {session?.user ? (
               <Link
-                href={'/dashboard'}
+                href={'/prompt'}
                 className="flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-bold text-white shadow-lg shadow-primary/40 transition-all hover:-translate-y-1 hover:bg-primary/90 hover:shadow-xl sm:w-auto"
               >
                 เริ่มวางแผนเที่ยว

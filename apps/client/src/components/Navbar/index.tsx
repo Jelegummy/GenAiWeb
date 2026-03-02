@@ -56,7 +56,7 @@ const Navbar = () => {
           {session?.user ? (
             <>
               <Link
-                href="/dashboard"
+                href="/prompt"
                 className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/40"
               >
                 วางแผนเที่ยว
