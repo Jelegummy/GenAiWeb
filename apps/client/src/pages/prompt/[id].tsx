@@ -9,7 +9,6 @@ import {
   MapPin,
   Calendar,
   Wallet,
-  Sparkles,
   MessageSquare,
   Loader2,
   Clock,
@@ -58,7 +57,7 @@ export default function PromptDetailPage() {
     <AppLayout>
       <div className="min-h-screen bg-[#f8fafc] pb-20 text-gray-800">
         <div className="sticky top-0 z-10 border-b border-gray-200 bg-white/80 px-4 py-4 shadow-sm backdrop-blur-md">
-          <div className="mx-auto flex max-w-4xl items-center gap-4">
+          <div className="mx-auto flex items-center gap-4">
             <Link
               href="/prompt"
               className="rounded-full p-2 text-gray-600 transition-colors hover:bg-primary/10 hover:text-primary"
@@ -66,7 +65,6 @@ export default function PromptDetailPage() {
               <ArrowLeft className="h-5 w-5" />
             </Link>
             <h1 className="flex items-center gap-2 text-lg font-semibold text-gray-800">
-              <Sparkles className="h-5 w-5 text-primary" />
               แผนการเดินทางของคุณ
             </h1>
           </div>
