@@ -9,32 +9,30 @@ import { FaCircleUser } from 'react-icons/fa6'
 
 const Navbar = () => {
   const { data: session } = useSession()
-  const [isScrolled, setIsScrolled] = useState(false)
+  // const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 50)
+  //   }
+  //   window.addEventListener('scroll', handleScroll)
+  //   return () => window.removeEventListener('scroll', handleScroll)
+  // }, [])
 
   return (
     <>
       <div
-        className={`fixed left-1/2 top-4 z-50 flex w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 sm:py-3 ${
-          isScrolled || isMobileMenuOpen
-            ? 'bg-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md'
-            : 'border border-white/30 bg-white/20 backdrop-blur-sm'
-        }`}
+        className={
+          'fixed left-1/2 top-4 z-50 flex w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 items-center justify-between rounded-full border bg-white px-4 py-2.5 transition-all duration-300 sm:px-6 sm:py-3'
+        }
       >
         <Link
           href="/"
           className="flex items-center gap-1 transition-transform hover:scale-105 sm:gap-2"
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          <div className="flex items-center justify-center rounded-full shadow-sm">
+          {/* <div className="flex items-center justify-center rounded-full shadow-sm">
             <Image
               src="/images/LOGO1.png"
               alt="Logo"
@@ -42,11 +40,9 @@ const Navbar = () => {
               height={65}
               className="h-[45px] w-[45px] drop-shadow-lg sm:h-[65px] sm:w-[65px]"
             />
-          </div>
+          </div> */}
           <h1
-            className={`text-lg font-extrabold tracking-tight sm:text-xl ${
-              isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'
-            }`}
+            className={`text-lg font-extrabold tracking-tight text-black sm:text-xl`}
           >
             เที่ยวเถอะ<span className="text-primary">ชาวไทย</span>
           </h1>
@@ -57,17 +53,13 @@ const Navbar = () => {
             <>
               <Link
                 href="/prompt"
-                className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/40"
+                className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary/90"
               >
                 วางแผนเที่ยว
               </Link>
               <button
                 onClick={() => signOut()}
-                className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-red-500 hover:text-white ${
-                  isScrolled
-                    ? 'bg-gray-100 text-gray-500'
-                    : 'bg-white/20 text-white'
-                }`}
+                className={`flex h-10 w-10 items-center justify-center rounded-full text-black transition-colors hover:bg-red-500 hover:text-white`}
                 title="ออกจากระบบ"
               >
                 <LogOut className="h-4 w-4" />
@@ -77,11 +69,7 @@ const Navbar = () => {
             <>
               <Link href="/login">
                 <button
-                  className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
-                    isScrolled
-                      ? 'text-gray-600 hover:bg-gray-100'
-                      : 'text-white hover:bg-white/20'
-                  }`}
+                  className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-black transition-colors`}
                 >
                   <LogIn className="h-4 w-4" />
                   เข้าสู่ระบบ
@@ -98,9 +86,7 @@ const Navbar = () => {
         </div>
 
         <button
-          className={`p-2 transition-colors md:hidden ${
-            isScrolled || isMobileMenuOpen ? 'text-gray-900' : 'text-white'
-          }`}
+          className={`p-2 text-black transition-colors md:hidden`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (

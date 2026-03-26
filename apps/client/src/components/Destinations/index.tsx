@@ -32,8 +32,8 @@ export function DestinationsSection() {
   return (
     <section className="relative overflow-hidden py-24">
       <div className="mx-auto mt-16 max-w-7xl px-6">
-        <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl" />
+        {/* <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl" /> */}
         <div className="mb-16 text-center">
           <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
             {'สถานที่ยอดนิยม'}

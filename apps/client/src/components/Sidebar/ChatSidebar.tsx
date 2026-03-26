@@ -16,6 +16,7 @@ import {
   Loader2,
   History,
 } from 'lucide-react'
+import DeleteTripButton from '@/features/history'
 
 interface ChatSidebarProps {
   isOpen: boolean
@@ -130,30 +131,40 @@ export default function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
             sortedHistory.map(trip => {
               const isActive = currentId === trip.id
               return (
-                <Link
+                <div
                   key={trip.id}
-                  href={`/prompt/${trip.id}`}
-                  title={trip.city || trip.question}
-                  className={`mb-1 flex items-center gap-2 rounded-xl px-2 py-2 text-sm transition-all ${
-                    isOpen ? '' : 'justify-center'
-                  } ${
-                    isActive
-                      ? 'bg-white/15 text-white'
-                      : 'text-gray-400 hover:bg-white/10 hover:text-white'
-                  }`}
+                  className="group relative mb-1 flex items-center"
                 >
-                  <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                  <Link
+                    href={`/prompt/${trip.id}`}
+                    title={trip.city || trip.question}
+                    className={`flex w-full items-center gap-2 rounded-xl px-2 py-2 text-sm transition-all ${
+                      isOpen ? 'pr-9' : 'justify-center'
+                    } ${
+                      isActive
+                        ? 'bg-white/15 text-white'
+                        : 'text-gray-400 hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                    {isOpen && (
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate font-medium">
+                          {trip.city || 'ไม่ระบุสถานที่'}
+                        </p>
+                        <p className="truncate text-xs text-gray-500">
+                          {trip.question}
+                        </p>
+                      </div>
+                    )}
+                  </Link>
+
                   {isOpen && (
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate font-medium">
-                        {trip.city || 'ไม่ระบุสถานที่'}
-                      </p>
-                      <p className="truncate text-xs text-gray-500">
-                        {trip.question}
-                      </p>
+                    <div className="absolute right-1.5 flex items-center">
+                      <DeleteTripButton id={trip.id} isActive={isActive} />
                     </div>
                   )}
-                </Link>
+                </div>
               )
             })}
         </div>
