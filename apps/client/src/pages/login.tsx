@@ -37,7 +37,7 @@ const Login = () => {
       const userRole = session?.user?.role
 
       if (userRole === 'USER') {
-        router.push('/prompt')
+        router.push('/')
       } else if (userRole === 'ADMIN') {
         router.push('/dashboard/admin')
       }
@@ -48,8 +48,8 @@ const Login = () => {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-100 px-4">
-      <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl" />
+      {/* <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+      <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl" /> */}
 
       <div className="absolute left-6 top-6 z-20">
         <Link
@@ -89,7 +89,7 @@ const Login = () => {
                 <FaUser className="text-gray-400" />
                 <input
                   type="email"
-                  className="w-full bg-transparent outline-none"
+                  className="w-full bg-white text-black outline-none"
                   placeholder="example@email.com"
                   {...register('email', { required: true })}
                 />
@@ -104,7 +104,7 @@ const Login = () => {
                 <FaLock className="text-gray-400" />
                 <input
                   type="password"
-                  className="w-full bg-transparent outline-none"
+                  className="w-full bg-white text-black outline-none"
                   placeholder="••••••••"
                   {...register('password', { required: true })}
                 />

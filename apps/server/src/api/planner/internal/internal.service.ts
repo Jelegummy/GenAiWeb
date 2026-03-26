@@ -1,5 +1,5 @@
 import { PrismaService } from "@app/db";
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { CreatePlannerDto } from "./internal.dto";
 import { Context, getUserFromContext } from "@app/common";
 
@@ -14,10 +14,27 @@ export class InternalPlannerService {
             throw new UnauthorizedException("Unauthorized")
         }
 
+        let chatHistory: any[] = []
+        const currentTripId = args.tripId
+
+        if (currentTripId) {
+            const history = await this.db.tripHistory.findUnique({
+                where: { id: currentTripId, userId: user.id }
+            })
+
+            if (!history) {
+                throw new NotFoundException("Trip history not found")
+            }
+
+            chatHistory = (history.messages as any) || []
+        }
+
+        chatHistory.push({ role: 'user', content: args.question });
+
         const response = await fetch('http://localhost:8000/ai/planning', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: args.question }),
+            body: JSON.stringify({ messages: chatHistory }),
             signal: AbortSignal.timeout(180000)
         })
 
@@ -27,17 +44,36 @@ export class InternalPlannerService {
 
         const aiData = await response.json()
 
-        const planner = await this.db.tripHistory.create({
-            data: {
-                userId: user.id,
-                question: args.question,
-                budget: aiData.budget,
-                city: aiData.city,
-                travelDates: aiData.travel_dates,
-                preferences: aiData.preferences,
-                planResult: aiData.plan,
-            }
-        })
+        chatHistory.push({ role: 'ai', content: aiData.plan });
+
+        let planner;
+
+        if (currentTripId) {
+            planner = await this.db.tripHistory.update({
+                where: { id: currentTripId },
+                data: {
+                    budget: aiData.budget || null,
+                    city: aiData.city || "",
+                    travelDates: aiData.travel_dates || "",
+                    preferences: aiData.preferences || "",
+                    planResult: aiData.plan,
+                    messages: chatHistory
+                }
+            });
+        } else {
+            planner = await this.db.tripHistory.create({
+                data: {
+                    userId: user.id,
+                    question: args.question,
+                    budget: aiData.budget || null,
+                    city: aiData.city || "",
+                    travelDates: aiData.travel_dates || "",
+                    preferences: aiData.preferences || "",
+                    planResult: aiData.plan,
+                    messages: chatHistory
+                }
+            });
+        }
 
         return planner
     }

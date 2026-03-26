@@ -17,6 +17,7 @@ const config = {
       },
       fontFamily: {
         bai: ['var(--font-bai-jamjuree)'],
+        sans: ['var(--font-sans)'],
       },
     },
   },
@@ -27,6 +28,18 @@ const config = {
         classroom: {
           ...defaultTheme.light,
           primary: '#d01716',
+          '.btn': {
+            animation: 0,
+          },
+        },
+      },
+      {
+        massage: {
+          ...defaultTheme.dark,
+          primary: '#d01716',
+          'base-100': '#1a1a1a',
+          'base-200': '#0f0f0f',
+          'base-300': '#0a0a0a',
           '.btn': {
             animation: 0,
           },

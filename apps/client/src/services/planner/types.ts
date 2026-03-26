@@ -1,6 +1,6 @@
 export type CreatePlannerArgs = {
+    tripId?: string
     question: string
-    title?: string
     travelDate?: string
     preferences?: string
     budget?: number

@@ -14,6 +14,7 @@ html {
 .potree_annotation .annotation-description {
     font-size: 8px;
 }
+
 .annotation-titlebar {
     color: white;
     background-color: black;
@@ -28,33 +29,53 @@ html {
 }
 
 @keyframes bounce {
-  0% { transform: translateY(-10px);}
-  50% { transform: translateY(0);}
-  100% { transform: translateY(-10px);}
+    0% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
 }
 
+@keyframes typingDot {
+    0%, 60%, 100% { opacity: 0.2; transform: scale(0.8); }
+    30%            { opacity: 1;   transform: scale(1.2); }
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+
 .custom-annotation {
-  z-index: 999 !important;
+    z-index: 999 !important;
 }
 
 .custom-marker {
-  position: absolute;
-  pointer-events: auto;
-  z-index: 999;
-  transform: translate(-50%, -100%);
-  text-align: center;
-  transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+    position: absolute;
+    pointer-events: auto;
+    z-index: 999;
+    transform: translate(-50%, -100%);
+    text-align: center;
+    transition: transform 0.2s cubic-bezier(.4, 0, .2, 1);
 }
+
 .custom-label {
-  background: #fff;
-  color: #333;
-  padding: 4px 10px;
-  border-radius: 6px;
-  margin-top: 2px;
-  font-weight: bold;
-  font-size: 1.1em;
-  box-shadow: 0 2px 12px #0002;
-  display: inline-block;
+    background: #fff;
+    color: #333;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 2px;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: 0 2px 12px #0002;
+    display: inline-block;
 }
 
 
@@ -155,14 +176,50 @@ html {
 
 body {
     font-family: 'Bai Jamjuree Regular', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
 }
+
+/* Scrollbar hiding */
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+
+/* Thin dark scrollbar for chat */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Textarea auto resize */
+textarea {
+    field-sizing: content;
+}
+
 .link-1 {
     color: #fff !important;
     font-size: 15px;
     text-decoration: none;
     position: relative;
     @apply self-center;
-    transition: color 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+    transition: color 0.3s cubic-bezier(.4, 0, .2, 1), transform 0.3s cubic-bezier(.4, 0, .2, 1);
 }
 
 .link-1::after {
@@ -174,7 +231,7 @@ body {
     width: 0;
     height: 2px;
     background: #91C8E4;
-    transition: width 0.3s cubic-bezier(.4,0,.2,1), left 0.3s cubic-bezier(.4,0,.2,1);
+    transition: width 0.3s cubic-bezier(.4, 0, .2, 1), left 0.3s cubic-bezier(.4, 0, .2, 1);
 }
 
 .link-1:hover {
@@ -185,9 +242,11 @@ body {
 .link-1:hover::after {
     width: 100%;
 }
+
 .link-1.active {
     color: #91C8E4 !important;
 }
+
 .link-1.active::after {
     width: 100%;
     left: 0;
@@ -226,11 +285,13 @@ body {
     cursor: pointer;
     transition: background-position 0.4s ease, color 0.3s ease, border 0.3s ease;
 }
+
 .btn-1:hover {
     background-position: right bottom;
     color: #fff !important;
     border: #fff 1px solid;
 }
+
 .btn-2 {
     background: linear-gradient(to right, #91c8e45e 50%, #91c8e496 50%);
     background-size: 200% 100%;

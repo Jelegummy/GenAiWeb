@@ -57,8 +57,8 @@ const Register = () => {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-100 px-4">
-      <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl" />
+      {/* <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+      <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl" /> */}
 
       <div className="absolute left-6 top-6 z-20">
         <Link
@@ -94,12 +94,12 @@ const Register = () => {
           >
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <input
-                className="rounded-xl border border-gray-200 px-4 py-3 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
+                className="rounded-xl bg-white text-black border border-gray-200 px-4 py-3 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
                 placeholder="ชื่อ"
                 {...register('firstName', { required: true })}
               />
               <input
-                className="rounded-xl border border-gray-200 px-4 py-3 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
+                className="rounded-xl bg-white text-black border border-gray-200 px-4 py-3 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/30"
                 placeholder="นามสกุล"
                 {...register('lastName', { required: true })}
               />
@@ -109,7 +109,7 @@ const Register = () => {
               <IoMail className="text-gray-400" />
               <input
                 type="email"
-                className="w-full bg-transparent outline-none"
+                className="w-full bg-white text-black outline-none"
                 placeholder="อีเมล"
                 {...register('email', { required: true })}
               />
@@ -119,7 +119,7 @@ const Register = () => {
               <FaLock className="text-gray-400" />
               <input
                 type="password"
-                className="w-full bg-transparent outline-none"
+                className="w-full bg-white text-black outline-none"
                 placeholder="รหัสผ่าน (อย่างน้อย 8 ตัวอักษร)"
                 {...register('password', { required: true })}
               />
@@ -129,7 +129,7 @@ const Register = () => {
               <FaLock className="text-gray-400" />
               <input
                 type="password"
-                className="w-full bg-transparent outline-none"
+                className="w-full bg-white text-black outline-none"
                 placeholder="ยืนยันรหัสผ่าน"
                 {...register('confirmPassword', { required: true })}
               />

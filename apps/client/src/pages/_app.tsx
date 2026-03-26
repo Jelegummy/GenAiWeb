@@ -13,7 +13,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
     <JotaiProvider>
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
-          <main data-theme="massage">
+          <main data-theme="massage" className="min-h-screen bg-[#1a1a1a]">
             <Component {...pageProps} />
             <Toaster richColors={true} position="bottom-center" />
           </main>

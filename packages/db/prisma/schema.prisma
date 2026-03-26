@@ -36,9 +36,12 @@ model TripHistory {
     planResult  String  @map("plan_result") @db.Text
     coverImage  String? @map("cover_image")
 
+    messages Json? @map("messages")
+
     userId    String   @map("user_id")
     user      User     @relation(fields: [userId], references: [id])
     createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
 
     @@index([userId])
     @@map("trip_histories")
