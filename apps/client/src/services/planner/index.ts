@@ -43,3 +43,16 @@ export const getHistoryById = async (id: string) => {
 
     return res.data
 }
+
+export const deleteHistory = async (id: string) => {
+    const session = await getSession()
+
+    const res = await fetchers.Delete(`${ENDPOINT}/planner/internal/history/${id}`, {
+        token: session?.user.accessToken
+    })
+    if (res.statusCode >= HttpStatus.BAD_REQUEST) {
+        throw new Error(res.message)
+    }
+
+    return res.data
+}

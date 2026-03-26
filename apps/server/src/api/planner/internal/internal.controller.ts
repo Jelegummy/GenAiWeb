@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Req } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Req } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { InternalPlannerService } from "./internal.service";
 import { CreatePlannerDto } from "./internal.dto";
@@ -26,6 +26,13 @@ export class InternalPlannerController {
     @Get('/history/:id')
     async getHistoryById(@Req() ctx: Context, @Param('id') id: string) {
         const res = await this.service.getHistoryById(ctx, id)
+
+        return { statusCode: HttpStatus.OK, data: res }
+    }
+
+    @Delete('/history/:id')
+    async deleteHistory(@Req() ctx: Context, @Param('id') id: string) {
+        const res = await this.service.deleteHistory(ctx, id)
 
         return { statusCode: HttpStatus.OK, data: res }
     }

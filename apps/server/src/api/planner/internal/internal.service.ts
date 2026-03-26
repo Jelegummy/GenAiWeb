@@ -106,4 +106,18 @@ export class InternalPlannerService {
 
         return history
     }
+
+    async deleteHistory(ctx: Context, id: string) {
+        const user = getUserFromContext(ctx)
+
+        if (!user) {
+            throw new UnauthorizedException("Unauthorized")
+        }
+
+        await this.db.tripHistory.deleteMany({
+            where: { id, userId: user.id }
+        })
+
+        return { success: true }
+    }
 }
