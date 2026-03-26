@@ -1,3 +1,4 @@
+from typing import List, Dict, Any
 from fastapi import FastAPI
 from pydantic import BaseModel
 from agent import travel_agent_graph
@@ -5,7 +6,7 @@ from agent import travel_agent_graph
 app = FastAPI()
 
 class TripRequest(BaseModel):
-    question: str
+    messages: List[Dict[str, str]]
     
 class TripResponse(BaseModel):
     city: str
@@ -16,11 +17,12 @@ class TripResponse(BaseModel):
     
 @app.post('/ai/planning')
 async def generate_trip(args: TripRequest):
-    result = await travel_agent_graph.ainvoke({"question": args.question})
+    result = await travel_agent_graph.ainvoke({"messages": args.messages})
     
     return TripResponse(
         city=result.get("city", ""),
         travel_dates=result.get("travel_dates", ""),
+        budget=result.get("budget", ""),
         preferences=result.get("preferences", ""),
         plan=result.get("final", "") 
     )
